@@ -7,6 +7,10 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [darkmode, setDarkmode] = useState(false)
 useEffect(()=>{
+  if(localStorage.getItem("darkmode") == undefined) {
+    localStorage.setItem("darkmode","true")
+  } 
+
 setDarkmode(localStorage.getItem("darkmode")=="true")
 
 
@@ -27,7 +31,7 @@ setDarkmode(localStorage.getItem("darkmode")=="true")
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       </Head>
-     <Navbar   toggleDark={toggleDark}/> 
+     <Navbar darkmode={darkmode}  toggleDark={toggleDark}/> 
      <Herosection /> 
     </div>
   )
